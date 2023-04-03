@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="appointments_action" model="ir.actions.act_window">
+        <field name="name">Appointments</field>
+        <field name="res_model">appointment.record</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Records Found
+            </p>
+        </field>
+        
+    </record>
+
+    <!-- form view -->
+    <record id="patient_detail_form1" model="ir.ui.view">
+        <field name="name">appointment record form</field>
+        <field name="model">appointment.record</field>
+        <field name="arch" type="xml">
+            <form string="Properties">
+                <sheet>
+                    <h1>
+                        <field name="patient_id" placeholder="Enter the name" />
+                    </h1>
+                    <group>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="patient_status" />
+                            </group>
+                            <group>
+                                <field name="appointment_date" />
+                                <field name="patient_id"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="General Information">
+                                <group>
+                                    <field name="diagnosis" widget="many2many_tags"></field>
+                                    <field name="description"></field>
+                                </group>
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- tree view -->
+    <record id="appointment_detail_tree1" model="ir.ui.view">
+        <field name="name">appointment record tree</field>
+        <field name="model">appointment.record</field>
+        <field name="arch" type="xml">
+            <tree>               
+                <field name="name" />
+                <field name="patient_id" />
+                <field name="appointment_date" />
+                <field name="patient_status" />
+            </tree>
+        </field>
+    </record>
+
+</odoo>

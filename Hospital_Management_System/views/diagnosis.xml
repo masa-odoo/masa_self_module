@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Configuration -->
+    <record id="diagnosis_action" model="ir.actions.act_window">
+        <field name="name">Diagnosis</field>
+        <field name="res_model">diagnosis.record</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Records Found
+            </p>
+        </field>
+    </record>
+
+    <record id="estate_property_tag_form_view1" model="ir.ui.view">
+        <field name="name">diagnosis Form View</field>
+        <field name="model">diagnosis.record</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- List/Tree View -->
+    <record id="estate_property_type_tree_view1" model="ir.ui.view">
+        <field name="name">diagnosis Tree View</field>
+        <field name="model">diagnosis.record</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+</odoo>

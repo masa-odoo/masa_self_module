@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Doctors -->
+    <record id="doctors_action" model="ir.actions.act_window">
+        <field name="name">Doctors</field>
+        <field name="res_model">doctor.record</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Records Found
+            </p>
+        </field>
+    </record>
+
+    <!-- Form view -->
+    <record id="estate_property_tag_form_view2" model="ir.ui.view">
+        <field name="name">doctor Form View</field>
+        <field name="model">doctor.record</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="qualification"/>
+                            <field name="fees"/>
+                            <field name="gender"/>
+                            
+                        </group>
+                        <group>
+                            <field name="date_of_birth"/>
+                            <field name="age"/>
+                            <field name="contact_no"/>
+                            <field name="email"/>
+                        </group>
+                        <field name="list_patients" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- List/Tree View -->
+    <record id="estate_property_type_tree_view2" model="ir.ui.view">
+        <field name="name">doctor Tree View</field>
+        <field name="model">doctor.record</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="qualification"/>
+                <field name="email"/>
+                <field name="contact_no"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- search view -->
+    <record id="doctor_search_view" model="ir.ui.view">
+        <field name="name">doctor search view</field>
+        <field name="model">doctor.record</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="email"/>
+                <filter name="gender" string="Male Doctors" domain="[('gender', '=', 'male')]"/>
+                <filter name="gender" string="Female Doctors" domain="[('gender', '=', 'female')]"/>
+                <group expand="1" string="group by">
+                    <filter name="qualification" string="Qualification" context="{'group_by':'qualification'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+</odoo>

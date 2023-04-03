@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<odoo>
+    <menuitem id="hms_root_menu" name="HMS" web_icon="Hospital_Management_System,static/description/abc.png">
+        <menuitem id="hms_menu_actionA" name="Patient"  >
+            <menuitem id="hms_manu_action1" name="Patient Record" action="patient_action"/>
+        </menuitem>
+
+        <menuitem id="hms_menu_actionB" name="Appointment"  >
+            <menuitem id="hms_manu_action2" name="Appointments" action="appointments_action"/>
+        </menuitem>
+
+        <menuitem id="hms_menu_actionC" name="Diagnosis"  >
+            <menuitem id="hms_manu_action3" name="Diagnosis" action="diagnosis_action"/>
+        </menuitem>
+
+        <menuitem id="hms_menu_actionD" name="Doctor"  >
+            <menuitem id="hms_manu_action4" name="Doctors" action="doctors_action"/>
+        </menuitem>
+
+        <menuitem id="hms_menu_actionE" name="Bed allocation"  >
+            <menuitem id="hms_manu_action5" name="Bed Allocation" action="bed_action"/>
+        </menuitem>
+
+        <menuitem id="hms_menu_actionF" name="Bills"  >
+            <menuitem id="hms_manu_action6" name="Bill" action="bills_action"/>
+        </menuitem>
+
+    </menuitem>
+</odoo>
