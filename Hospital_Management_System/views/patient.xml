@@ -72,6 +72,11 @@
                                     <field name="description"></field>
                                 </group>
                             </page>
+                            <page string="Bills">
+                                <group>
+                                    
+                                </group>
+                            </page>
                         </notebook>
                     </group>
                 </sheet>

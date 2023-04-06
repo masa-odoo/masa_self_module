@@ -19,7 +19,7 @@ class HospitalPatient(models.Model):
             ('others','Others'),
         ],string="Gender"   
     )
-    email = fields.Char(string='E-mail')
+    email = fields.Char(string='E-mail',copy=False)
     height = fields.Float('Height')
     weight = fields.Float('Weight')
     contact_no = fields.Char(string="Contact")
@@ -32,6 +32,7 @@ class HospitalPatient(models.Model):
     blood_type = fields.Selection([('A', 'A'),('B', 'B'),('AB', 'AB'),('O', 'O')], string ="Blood Type")
     description = fields.Text(string="Description")
     doctor_id = fields.Many2one('doctor.record', string="Doctor")
+    bill_ids = fields.One2many('bills.record','patient_id',string='Billing')
     state = fields.Selection(
         selection=[
             ('new', 'New'),
@@ -52,13 +53,13 @@ class HospitalPatient(models.Model):
 
     _sql_constraints = [
         ('check_email', 'unique( email)',
-         'The Height must be postive'),
+         'The Email must be postive'),
     ]
 
     @api.constrains('contact_no')
     def _check_number(self):
         for record in self:
-            print(record.contact_no)
+            # print(record.contact_no)
             if len(record.contact_no)<10:
                 raise UserError("Contact number must be >10")
             else:
@@ -67,18 +68,10 @@ class HospitalPatient(models.Model):
     @api.constrains('email')
     def _check_email(self):
         for record in self:
-            print(record.email)
+            # print(record.email)
             validation = '^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$'
             if not re.match(validation,record.email):
                 raise UserError("This Email is not valid")
-            
-    # @api.depends("date_of_birth","date")
-    # def _check_age(self):
-    #     for record in self:
-    #         if record.date_of_birth:
-    #             record.age = record.date.year - record.date_of_birth.year
-    #         else:
-    #             record.age = 0
 
     @api.depends('date','date_of_birth')
     def _compute_age(self):
@@ -87,8 +80,11 @@ class HospitalPatient(models.Model):
 
     def action_treated(self):
         for record in self:
-            if record.state != "treated":
+            print(record.bill_ids.status)
+            if record.bill_ids.status == "paid":
                 record.state = "treated"
+            else:
+                raise UserError("First Pay the Bill")
 
     def action_untreated(self):
         for record in self:

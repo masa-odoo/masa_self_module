@@ -13,22 +13,33 @@
     </record>
 
     <!-- form view -->
-    <record id="bills_form_view1" model="ir.ui.view">
+    <record id="bills_form_view" model="ir.ui.view">
         <field name="name">bills Form View</field>
         <field name="model">bills.record</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="action_paid"  type="object" string="Paid" />
+                    <button name="action_due" type="object" string="Due"/>
+                </header>
                 <sheet>
-                    <group>
-                        <field name="bill_number"/>
-                        <field name="doctor_id"/>
-                        <field name="doctor_fees"/>
-                    </group>
-                    <group>
-                        <field name="bed_type"/>
-                        <field name="bed_price"/>
-                        <field name="number_of_days"/>
-                        <field name="total_price"/>
+                    <group col="3">
+                        <group>
+                            <field name="name"/>
+                            <field name="doctor_id"/>
+                            <field name="patient_id"/>
+                            <field name="doctor_fees"/>
+                        </group>
+                        <group>
+                            <field name="bed_type"/>
+                            <field name="bed_price"/>
+                            <field name="number_of_days"/>
+                            <field name="total_price"/>
+                        </group>
+                        <group>
+                            <field name="total_bill"/>
+                            <field name="status"/>
+                        </group>
                     </group>
                 </sheet>
             </form>
@@ -40,8 +51,13 @@
         <field name="name">bills Tree View</field>
         <field name="model">bills.record</field>
         <field name="arch" type="xml">
-            <tree>
-                <field name="bill_number" />
+            <tree decoration-danger="status =='due'" decoration-success="status =='paid'">
+                <field name="name" />
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="bed_type"/>
+                <field name="total_bill"/>
+                <field name="status"/>
             </tree>
         </field>
     </record>
