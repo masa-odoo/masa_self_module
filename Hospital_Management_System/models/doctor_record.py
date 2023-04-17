@@ -27,6 +27,9 @@ class HospitalPatient(models.Model):
     specialization = fields.Char(string='Specialist In')
     fees = fields.Float(string='Fees', required=True)
     list_patients = fields.One2many('patient.record','doctor_id',readonly=True)
+    appointment_id = fields.One2many('appointment.record','doctor_id',string="Appointments")
+
+    appointment_count = fields.Integer(compute="_compute_doctor_count")
 
     _sql_constraints = [
         ('check_success_rate', 'CHECK(success_rate <= 100 AND success_rate >= 0)',
@@ -55,6 +58,12 @@ class HospitalPatient(models.Model):
     def _compute_age(self):
         for record in self:
             record.age = relativedelta(record.date,record.date_of_birth).years
+
+    @api.depends('appointment_id')
+    def _compute_doctor_count(self):
+        for record in self:
+            print(record.read())
+            record.appointment_count = len(record.appointment_id)
     
 
 

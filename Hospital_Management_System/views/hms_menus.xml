@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <odoo>
-    <menuitem id="hms_root_menu" name="HMS" web_icon="Hospital_Management_System,static/description/abc.png">
+    <menuitem id="hms_root_menu" name="HMS" web_icon="Hospital_Management_System,static/description/download.png">
         <menuitem id="hms_menu_actionA" name="Patient"  >
             <menuitem id="hms_manu_action1" name="Patient Record" action="patient_action"/>
         </menuitem>

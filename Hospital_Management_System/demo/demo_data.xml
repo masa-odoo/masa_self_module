@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record model = "bills.record" id="bills_record_demo">
+            <field name = "name">1</field>
+            <field name = "status">paid</field>
+            <field name = "number_of_days">10</field>
+        </record>
+
+        <record model = "patient.record" id="patient_record_demo">
+            <field name = "name">Jitu</field>
+            <field name = "gender">male</field>
+            <field name = "email">jitu@odoo.com</field>
+            <field name = "height">10</field>
+            <field name = "weight">10</field>
+            <field name = "contact_no">1234567891010</field>
+        </record>
+        <record model = "patient.record" id="patient_record_demo2">
+            <field name = "name">ABC</field>
+            <field name = "gender">male</field>
+            <field name = "email">abc@odoo.com</field>
+            <field name = "height">10</field>
+            <field name = "weight">10</field>
+            <field name = "contact_no">1234567891010</field>
+        </record>
+        <record model = "patient.record" id="patient_record_demo3">
+            <field name = "name">XYZ</field>
+            <field name = "gender">male</field>
+            <field name = "email">xyz@odoo.com</field>
+            <field name = "height">10</field>
+            <field name = "weight">10</field>
+            <field name = "contact_no">1234567891010</field>
+        </record>
+        
+        <record model = "bed.record" id="bed_record_demo">
+            <field name = "name">Reserved</field>
+            <field name = "price">50</field>
+        </record>
+        
+        <record model = "doctor.record" id="doctor_record_demo">
+            <field name = "name">Hado</field>
+            <field name = "contact_no">111111111111111</field>
+            <field name = "email">hado@odoo.com</field>
+            <field name = "fees">200</field>
+        </record>
+        <record model = "doctor.record" id="doctor_record_demo1">
+            <field name = "name">Aman</field>
+            <field name = "contact_no">111111111111111</field>
+            <field name = "email">aman@odoo.com</field>
+            <field name = "fees">300</field>
+        </record>
+        <record model = "doctor.record" id="doctor_record_demo2">
+            <field name = "name">Sagu</field>
+            <field name = "contact_no">111111111111111</field>
+            <field name = "email">sagu@odoo.com</field>
+            <field name = "fees">400</field>
+        </record>
+
+        <!-- <record model = "appointment.record" id="appointment_record_demo2">
+            <field name = "name">Sagu</field>
+            <field name = "contact_no">111111111111111</field>
+            <field name = "email">sagu@odoo.com</field>
+            <field name = "fees">400</field>
+        </record> -->
+    </data>
+</odoo>

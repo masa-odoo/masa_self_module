@@ -20,7 +20,7 @@
         <field name="arch" type="xml">
             <form string="Properties">
                 <header>
-                    <field name="state" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}" />    
+                    <field name="state" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}" />
                     <button name="action_treated" type="object" string="Treated" attrs="{'invisible': [('state', '==','treated')]}"/>
                     <button name="action_untreated" type="object" string="Untreated" attrs="{'invisible': [('state', '==','untreated')]}"/>
                 </header>
@@ -74,7 +74,13 @@
                             </page>
                             <page string="Bills">
                                 <group>
-                                    
+                                    <field name="b_name"/>
+                                    <field name="doctor_id"/>
+                                    <field name="doctor_fees"/>
+                                    <field name="bed_type"/>
+                                    <field name="number_of_days"/>
+                                    <field name="total_bill"/>
+                                    <field name="status"/>
                                 </group>
                             </page>
                         </notebook>
@@ -111,7 +117,7 @@
                 <field name="weight"/>
                 <filter name="gender" string="Male Patients" domain="[('gender', '=', 'male')]"/>
                 <filter name="gender" string="Female Patients" domain="[('gender', '=', 'female')]"/>
-                <filter name="age" string="Age" domain="[('age','>=',18)]"/> 
+                <filter name="age" string="Age" domain="[('age','>=',18)]"/>
                 <group expand='1' string="Group By">
                     <filter string="diagnosis" name="Diagnosis" context="{'group_by':'diagnosis'}" />
                     <!--Repeatable -->

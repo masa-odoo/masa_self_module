@@ -9,6 +9,9 @@
             <p class="o_view_nocontent_smiling_face">
                 No Records Found
             </p>
+            
+
+            <field name="context">{'search_default_name': True}</field>
         </field>
         
     </record>
@@ -20,14 +23,16 @@
         <field name="arch" type="xml">
             <form string="Properties">
                 <sheet>
+                    
                     <h1>
                         <field name="patient_id" placeholder="Enter the name" />
                     </h1>
                     <group>
                         <group>
                             <group>
-                                <field name="name" />
+                                <field name="id" />
                                 <field name="patient_status" />
+                                <field name="doctor_id"/>
                             </group>
                             <group>
                                 <field name="appointment_date" />
@@ -53,13 +58,16 @@
         <field name="name">appointment record tree</field>
         <field name="model">appointment.record</field>
         <field name="arch" type="xml">
-            <tree>               
-                <field name="name" />
+            <tree >               
+                <field name="id" />
+                <field name="doctor_id" />
                 <field name="patient_id" />
                 <field name="appointment_date" />
                 <field name="patient_status" />
             </tree>
         </field>
     </record>
+
+    
 
 </odoo>

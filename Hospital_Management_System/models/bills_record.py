@@ -20,7 +20,7 @@ class Bills(models.Model):
         selection=[
             ('paid', 'Paid'),
             ('due', 'Due'),
-        ]
+        ],readonly=True
     )
 
     total_price = fields.Float(compute='compute_total_price', string='Total Price')
@@ -46,6 +46,8 @@ class Bills(models.Model):
         for record in self:
             record.status = "due"
         self.patient_id.state = "billing"
+
+    
 
     
 

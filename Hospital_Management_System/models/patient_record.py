@@ -31,15 +31,26 @@ class HospitalPatient(models.Model):
     marital_status = fields.Selection([('s','Single'),('m','Married'),('w','Widowed'),('d','Divorced'),('x','Seperated')],string='Marital Status')
     blood_type = fields.Selection([('A', 'A'),('B', 'B'),('AB', 'AB'),('O', 'O')], string ="Blood Type")
     description = fields.Text(string="Description")
+
     doctor_id = fields.Many2one('doctor.record', string="Doctor")
+    doctor_fees = fields.Float(related = "doctor_id.fees",string="Doctor Fees")
+
+    bed_type = fields.Many2one('bed.record',string="Bed Type")
+
     bill_ids = fields.One2many('bills.record','patient_id',string='Billing')
+    number_of_days = fields.Integer(related = "bill_ids.number_of_days",string="Number Of Days")
+    total_bill = fields.Float(related = "bill_ids.total_bill",string="Total Bill")
+    status = fields.Selection(related = "bill_ids.status",string="Status")
+    b_name = fields.Char(related = "bill_ids.name",string="Bill Number")
+
+
     state = fields.Selection(
         selection=[
             ('new', 'New'),
-            ('billing', 'Billing'),
             ('treated', 'Treated'),
             ('untreated', 'Untreated'),
-            ('discharge', 'Discharge')
+            ('billing', 'Billing'),
+            ('discharge', 'Discharge'),
         ], default="new"
     )
 
@@ -93,6 +104,8 @@ class HospitalPatient(models.Model):
             else:
                 record.state = "untreated"
         return True
+    
+    
 
             
             

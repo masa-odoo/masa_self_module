@@ -19,8 +19,8 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_paid"  type="object" string="Paid" />
-                    <button name="action_due" type="object" string="Due"/>
+                    <button name="action_paid" type="object" string="paid" icon="fa-check"/>
+                    <button name="action_due" type="object" string="due" icon="fa-times"/>
                 </header>
                 <sheet>
                     <group col="3">
